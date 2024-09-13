@@ -12,7 +12,7 @@ class Group_Dishes
 public:
 	void addDish();
 	void readDishes(ifstream& fin);
-	void saveDishes();
+	void saveDishes(ofstream& fout);
 	void deleteDishes();
 
 	friend ostream& operator<<(ostream& grout, const Group_Dishes& group);

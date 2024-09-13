@@ -40,14 +40,26 @@ int main()
 		}
 		case 3:
 		{
+			cout << "\n[3] Чтение данных из файла..." << endl;
 			string fileRead;
 			ifstream fin;
-			cout << "\nВведите название файла [без домена]:" << endl;
+			cout << "\nВведите название файла, из которого нужно загрузить данные [без домена]:" << endl;
 			cin >> fileRead;
 			fin.open(fileRead + ".txt");
 			grDish.readDishes(fin);
-			cout << "\nДанные успешно загружены!" << endl;
 			fin.close();
+			break;
+		}
+		case 4:
+		{
+			cout << "[4] Сохранение данных в файл..." << endl;
+			string fileOut;
+			ofstream fout;
+			cout << "\nВведите название файла, в который нужно сохранить данные:" << endl;
+			cin >> fileOut;
+			fout.open(fileOut + ".txt");
+			grDish.saveDishes(fout);
+			fout.close();
 			break;
 		}
 		case 5:

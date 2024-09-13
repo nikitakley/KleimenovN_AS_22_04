@@ -33,7 +33,7 @@ ostream& operator<<(ostream& grout, const Group_Dishes& group)
 void Group_Dishes::readDishes(ifstream& fin)
 {
 	if (!fin.is_open())
-		cout << "\nТакого файла не существует." << endl;
+		cout << "\nТакого файла не существует.";
 	else
 	{
 		deleteDishes();
@@ -44,6 +44,21 @@ void Group_Dishes::readDishes(ifstream& fin)
 			fin >> *dish0;
 			ptrsDishes.push_back(dish0);
 		}
+		cout << "\nДанные успешно загружены!" << endl;
+	}
+}
+
+void Group_Dishes::saveDishes(ofstream& fout)
+{
+	if (ptrsDishes.size() == 0)
+		cout << "\nСписок блюд пуст." << endl;
+	else
+	{
+		fout << ptrsDishes.size() << endl;
+		for (auto elem : ptrsDishes) {
+			fout << *elem;
+		}
+		cout << "\nДанные успешно сохранены!" << endl;
 	}
 }
 
