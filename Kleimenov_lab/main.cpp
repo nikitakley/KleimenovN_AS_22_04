@@ -10,15 +10,11 @@ using namespace std;
 
 int main()
 {
-	setlocale(LC_ALL, "Russian");
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	Dish dish0;
-	vector<Dish> vectorDishes;
-	/*Dishes groupDishes;*/
+	Group_Dishes grDish;
 
-	int num = 0;
 	while (true) {
 		cout << endl << "Команды:" << endl;
 		cout << "1) Добавить блюдо" << endl;
@@ -33,32 +29,34 @@ int main()
 		case 1:
 		{
 			cout << "\n[1] Добавление нового блюда..." << endl;
-			Dish dish0;
-			cin >> dish0;
-			vectorDishes.push_back(dish0);
+			grDish.addDish();
 			break;
 		}
 		case 2:
 		{
 			cout << "\n[2] Вывод всех блюд..." << endl;
-			for (const auto& elem : vectorDishes)
-				cout << elem << endl;
+			cout << grDish;
 			break;
 		}
-		//case 3:
-		//{
-		//	cout << "\n[3] Viewing all objects: " << endl;
-		//	if (Pipes.size() == 0)
-		//		cout << "\nNo pipes have been added!" << endl;
-		//	for (const auto& elem : Pipes)
-		//		cout << elem.second;
-
-		//	if (Stations.size() == 0)
-		//		cout << "\nNo stations have been added!" << endl;
-		//	for (const auto& elem : Stations)
-		//		cout << elem.second;
-		//	break;
-		//}
+		case 3:
+		{
+			string fileRead;
+			ifstream fin;
+			cout << "\nВведите название файла [без домена]:" << endl;
+			cin >> fileRead;
+			fin.open(fileRead + ".txt");
+			grDish.readDishes(fin);
+			cout << "\nДанные успешно загружены!" << endl;
+			fin.close();
+			break;
+		}
+		case 5:
+		{
+			cout << "\n[5] Очищение списка блюд..." << endl;
+			grDish.deleteDishes();
+			cout << "Список очищен.\n";
+			break;
+		}
 		case 0:
 		{
 			return false;

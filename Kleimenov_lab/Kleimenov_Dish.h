@@ -7,9 +7,8 @@ using namespace std;
 
 class Dish
 {
-public:
+protected:
 	static int maxId;
-
 	int Id;
 	string dishName = "None";
 	int dishPrice = 0;
@@ -17,11 +16,8 @@ public:
 	bool dishAvailability = 1;
 
 	int GetId();
-	//string GetName() const;
-	//int GetPrice() const;
-	//double GetWeight() const;
-	//bool GetAvailibility();
 
+public:
 	friend istream& operator>> (istream& in, Dish& newDish);
 	friend ostream& operator<< (ostream& out, const Dish& newDish);
 	friend ifstream& operator>> (ifstream& fin, Dish& newDish);
