@@ -7,14 +7,14 @@ template <typename Type>
 Type GetCorrectData(Type min, Type max)
 {
 	Type x;
-	while ((std::cin >> x).fail() || std::cin.peek() != '\n' || x < min || x > max)
+	while ((cin >> x).fail() || cin.peek() != '\n' || x < min || x > max)
 	{
-		std::cin.clear();
-		std::cin.ignore(100000, '\n');
-		std::cout << "\nПожалуйста, введите корректные данные! Данные должны лежать в промежутке [" << min << " - " << max << "]";
-		std::cout << "\nПовторный ввод: ";
+		cin.clear();
+		cin.ignore(INT_MAX, '\n');
+		cout << "\nПожалуйста, введите корректные данные! Данные должны лежать в промежутке [" << min << " - " << max << "]";
+		cout << "\nПовторный ввод: ";
 	}
 
-	std::cin.ignore(100000, '\n');
+	cin.ignore(INT_MAX, '\n');
 	return x;
 }

@@ -1,19 +1,18 @@
 #include "Kleimenov_Dish.h"
 #include "Utilities.h"
 
-int Dish::maxId = 0;
+int Kleimenov_Dish::maxId = 0;
 
-int Dish::GetId()
+int Kleimenov_Dish::GetId()
 {
     return Id;
 }
 
-istream& operator>>(istream& in, Dish& newDish)
+istream& operator>>(istream& in, Kleimenov_Dish& newDish)
 {
     newDish.Id = ++newDish.maxId;
     cout << "ID: " << newDish.Id;
     cout << "\n¬ведите наименование блюда: ";
-    //in.ignore();
     getline(in, newDish.dishName);
     cout << "\n¬ведите цену блюда: ";
     newDish.dishPrice = GetCorrectData(50, 10000);
@@ -24,7 +23,7 @@ istream& operator>>(istream& in, Dish& newDish)
     return in;
 }
 
-ostream& operator<<(ostream& out, const Dish& newDish)
+ostream& operator<<(ostream& out, const Kleimenov_Dish& newDish)
 {
     if (newDish.dishName == "None")
     {
@@ -39,7 +38,7 @@ ostream& operator<<(ostream& out, const Dish& newDish)
     return out;
 }
 
-ifstream& operator>>(ifstream& fin, Dish& newDish)
+ifstream& operator>>(ifstream& fin, Kleimenov_Dish& newDish)
 {
     fin >> newDish.Id;
     newDish.maxId = newDish.Id;
@@ -51,7 +50,7 @@ ifstream& operator>>(ifstream& fin, Dish& newDish)
     return fin;
 }
 
-ofstream& operator<<(ofstream& fout, const Dish& newDish)
+ofstream& operator<<(ofstream& fout, const Kleimenov_Dish& newDish)
 {
     fout << newDish.Id << "\n" << newDish.dishName << "\n" << newDish.dishPrice << "\n" <<
         newDish.dishWeight << "\n" << newDish.dishAvailability << endl;

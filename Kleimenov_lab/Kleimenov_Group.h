@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class Group_Dishes
+class Kleimenov_GrDishes
 {
 public:
 	void addDish();
@@ -15,12 +15,14 @@ public:
 	void saveDishes(ofstream& fout);
 	void deleteDishes();
 
-	friend ostream& operator<<(ostream& grout, const Group_Dishes& group);
+	friend ostream& operator<<(ostream& grout, const Kleimenov_GrDishes& group);
 
-	~Group_Dishes()
+	~Kleimenov_GrDishes()
 	{
+		for (auto& elem : ptrsDishes)
+			delete elem;
 	}
 
 protected:
-	vector<Dish*> ptrsDishes;
+	vector<Kleimenov_Dish*> ptrsDishes;
 };

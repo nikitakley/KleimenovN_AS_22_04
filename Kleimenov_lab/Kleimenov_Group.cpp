@@ -1,21 +1,21 @@
 #include "Kleimenov_Group.h"
 #include "Utilities.h"
 
-void Group_Dishes::addDish()
+void Kleimenov_GrDishes::addDish()
 {
-	Dish *dish0 = new Dish;
+	Kleimenov_Dish *dish0 = new Kleimenov_Dish;
 	cin >> *dish0;
 	ptrsDishes.push_back(dish0);
 }
 
-void Group_Dishes::deleteDishes()
+void Kleimenov_GrDishes::deleteDishes()
 {
 	for (auto& elem : ptrsDishes)
 		delete elem;
 	ptrsDishes.clear();
 }
 
-ostream& operator<<(ostream& grout, const Group_Dishes& group)
+ostream& operator<<(ostream& grout, const Kleimenov_GrDishes& group)
 {
 	grout << "Имеющиеся блюда:" << endl;
 	if (group.ptrsDishes.size() == 0)
@@ -30,7 +30,7 @@ ostream& operator<<(ostream& grout, const Group_Dishes& group)
 	return grout;
 }
 
-void Group_Dishes::readDishes(ifstream& fin)
+void Kleimenov_GrDishes::readDishes(ifstream& fin)
 {
 	if (!fin.is_open())
 		cout << "\nТакого файла не существует.";
@@ -40,7 +40,7 @@ void Group_Dishes::readDishes(ifstream& fin)
 		int n = 0;
 		fin >> n;
 		for (int i = 0; i < n; i++) {
-			Dish* dish0 = new Dish;
+			Kleimenov_Dish* dish0 = new Kleimenov_Dish;
 			fin >> *dish0;
 			ptrsDishes.push_back(dish0);
 		}
@@ -48,7 +48,7 @@ void Group_Dishes::readDishes(ifstream& fin)
 	}
 }
 
-void Group_Dishes::saveDishes(ofstream& fout)
+void Kleimenov_GrDishes::saveDishes(ofstream& fout)
 {
 	if (ptrsDishes.size() == 0)
 		cout << "\nСписок блюд пуст." << endl;

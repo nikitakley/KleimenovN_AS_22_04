@@ -1,7 +1,7 @@
 #include <iostream>
-#include <windows.h>
 #include <fstream>
 #include <string>
+#include <windows.h>
 #include "Kleimenov_Dish.h"
 #include "Kleimenov_Group.h"
 #include "Utilities.h"
@@ -13,7 +13,7 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	Group_Dishes grDish;
+	Kleimenov_GrDishes grDish;
 
 	while (true) {
 		cout << endl << "Команды:" << endl;
@@ -44,7 +44,7 @@ int main()
 			string fileRead;
 			ifstream fin;
 			cout << "\nВведите название файла, из которого нужно загрузить данные [без домена]:" << endl;
-			cin >> fileRead;
+			getline(cin, fileRead);
 			fin.open(fileRead + ".txt");
 			grDish.readDishes(fin);
 			fin.close();
@@ -56,7 +56,7 @@ int main()
 			string fileOut;
 			ofstream fout;
 			cout << "\nВведите название файла, в который нужно сохранить данные:" << endl;
-			cin >> fileOut;
+			getline(cin, fileOut);
 			fout.open(fileOut + ".txt");
 			grDish.saveDishes(fout);
 			fout.close();

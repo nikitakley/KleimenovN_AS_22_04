@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class Dish
+class Kleimenov_Dish
 {
 protected:
 	static int maxId;
@@ -18,9 +18,9 @@ protected:
 	int GetId();
 
 public:
-	friend istream& operator>> (istream& in, Dish& newDish);
-	friend ostream& operator<< (ostream& out, const Dish& newDish);
-	friend ifstream& operator>> (ifstream& fin, Dish& newDish);
-	friend ofstream& operator<< (ofstream& fout, const Dish& newDish);
+	friend istream& operator>> (istream& in, Kleimenov_Dish& newDish);
+	friend ostream& operator<< (ostream& out, const Kleimenov_Dish& newDish);
+	friend ifstream& operator>> (ifstream& fin, Kleimenov_Dish& newDish);
+	friend ofstream& operator<< (ofstream& fout, const Kleimenov_Dish& newDish);
 };
 
