@@ -17,7 +17,7 @@ public:
 
 	~Kleimenov_GrDishes(){}
 
-	vector<shared_ptr<Kleimenov_Dish>>& getvector()
+	vector<shared_ptr<Kleimenov_Dish>>& vectorGet()
 	{
 		return ptrsDishes;
 	}
