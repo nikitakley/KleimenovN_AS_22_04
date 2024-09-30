@@ -8,14 +8,20 @@ class Kleimenov_GrDishes
 {
 public:
 	void addDish();
-	//void readDishes(ifstream& fin);
-	//void saveDishes(ofstream& fout);
+	void addSpecialDish();
+	//void readDishes(string& fileIn);
+	//void saveDishes(string& fileOut);
 	void deleteDishes();
 
 	friend ostream& operator<<(ostream& grout, const Kleimenov_GrDishes& group);
 
 	~Kleimenov_GrDishes(){}
 
-protected:
+	vector<shared_ptr<Kleimenov_Dish>>& getvector()
+	{
+		return ptrsDishes;
+	}
+
+private:
 	vector<shared_ptr<Kleimenov_Dish>> ptrsDishes;
 };

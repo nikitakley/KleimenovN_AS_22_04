@@ -18,3 +18,21 @@ Type GetCorrectData(Type min, Type max)
 	cin.ignore(INT_MAX, '\n');
 	return x;
 }
+
+inline string GetCorrectSeason()
+{
+    string season;
+    while (true) 
+    {
+        getline(cin, season);
+        for (auto& c : season) {
+            c = tolower(c);
+        }
+
+        if (season == "весна" || season == "лето" || season == "осень" || season == "зима") 
+        {
+            return season;
+        }
+        cout << "\nПожалуйста, введите корректное время года [весна, лето, осень, зима]: ";
+    }
+}

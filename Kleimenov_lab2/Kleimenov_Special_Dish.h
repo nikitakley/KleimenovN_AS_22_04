@@ -12,8 +12,8 @@ public:
 	DECLARE_SERIAL(Kleimenov_Special_Dish);
 	Kleimenov_Special_Dish() {}
 
-	virtual void addDish(istream& in) override;
-	virtual void printDish(ostream& out) override;
-	virtual void Serialize(CArchive& ar) override;
+	void addDish(istream& in) override;
+	void printDish(ostream& out) override;
+	void Serialize(CArchive& ar) override;
 	virtual ~Kleimenov_Special_Dish() {}
 };

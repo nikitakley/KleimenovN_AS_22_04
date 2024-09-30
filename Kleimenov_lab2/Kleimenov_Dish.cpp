@@ -23,7 +23,7 @@ void Kleimenov_Dish::addDish(istream& in)
 void Kleimenov_Dish::printDish(ostream& out)
 {
     out << "ID: " << Id << "\tНаименование: " << dishName <<
-        "\tЦена: " << dishPrice << "\tВес: " << dishWeight << endl;
+        "\tЦена: " << dishPrice << "\tВес: " << dishWeight;
 }
 
 void Kleimenov_Dish::Serialize(CArchive& ar)

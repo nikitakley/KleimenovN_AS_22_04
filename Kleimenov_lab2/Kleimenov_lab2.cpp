@@ -44,41 +44,68 @@ int main()
 		case 2:
 		{
 			cout << "\n[2] Добавление особого блюда..." << endl;
-
+			grDish.addSpecialDish();
+			break;
 		}
 		case 3:
 		{
-			cout << "\n[2] Вывод всех блюд..." << endl;
+			cout << "\n[3] Вывод всех блюд..." << endl;
 			cout << grDish;
 			break;
 		}
 		case 4:
 		{
-			//cout << "\n[3] Чтение данных из файла..." << endl;
-			//string fileRead;
-			//ifstream fin;
-			//cout << "\nВведите название файла, из которого нужно загрузить данные [без домена]:" << endl;
-			//getline(cin, fileRead);
-			//fin.open(fileRead + ".txt");
-			//grDish.readDishes(fin);
-			//fin.close();
-			//break;
+			cout << "\n[4] Чтение данных из файла..." << endl;
+			string fileRead;
+			cout << "\nВведите название файла, из которого нужно загрузить данные [без домена]:" << endl;
+			getline(cin, fileRead);
+			fileRead += ".dat";
+			//grDish.readDishes(fileRead);
+			CFileStatus fileFlag;
+			if (CFile::GetStatus(fileRead.c_str(), fileFlag)) 
+			{
+				CFile f(fileRead.c_str(), CFile::modeRead);
+				CArchive ar(&f, CArchive::load);
+				int n;
+				ar >> n;
+				for (int i = 0; i < n; i++) {
+					Kleimenov_Dish* dishptr;
+					ar >> dishptr;
+					shared_ptr<Kleimenov_Dish> New(dishptr);
+					grDish.getvector().push_back(New);
+				}
+				ar.Close();
+				cout << "\nДанные успешно загружены!" << endl;
+			}
+			else
+			{
+				cout << "\nТакого файла не существует.";
+			}
+			break;
 		}
 		case 5:
 		{
-			//cout << "[4] Сохранение данных в файл..." << endl;
-			//string fileOut;
-			//ofstream fout;
-			//cout << "\nВведите название файла, в который нужно сохранить данные:" << endl;
-			//getline(cin, fileOut);
-			//fout.open(fileOut + ".txt");
-			//grDish.saveDishes(fout);
-			//fout.close();
+			cout << "[5] Сохранение данных в файл..." << endl;
+			string fileWrite;
+			cout << "\nВведите название файла, в который нужно сохранить данные [без домена]:" << endl;
+			getline(cin, fileWrite);
+			fileWrite += ".dat";
+			//grDish.saveDishes(fileWrite);
+			CFile f(fileWrite.c_str(), CFile::modeCreate | CFile::modeWrite);
+			CArchive ar(&f, CArchive::store);
+			ar << (int)grDish.getvector().size();
+			for (auto& ptr : grDish.getvector())
+			{
+				auto elem = ptr.get();
+				ar << elem;
+			}
+			ar.Close();
+			cout << "\nДанные успешно загружены!" << endl;
 			break;
 		}
 		case 6:
 		{
-			cout << "\n[5] Очищение списка блюд..." << endl;
+			cout << "\n[6] Очищение списка блюд..." << endl;
 			grDish.deleteDishes();
 			cout << "Список очищен.\n";
 			break;
