@@ -72,7 +72,7 @@ int main()
 					Kleimenov_Dish* dishptr;
 					ar >> dishptr;
 					shared_ptr<Kleimenov_Dish> New(dishptr);
-					grDish.getvector().push_back(New);
+					grDish.vectorGet().push_back(New);
 				}
 				ar.Close();
 				cout << "\nДанные успешно загружены!" << endl;
@@ -93,8 +93,8 @@ int main()
 			//grDish.saveDishes(fileWrite);
 			CFile f(fileWrite.c_str(), CFile::modeCreate | CFile::modeWrite);
 			CArchive ar(&f, CArchive::store);
-			ar << (int)grDish.getvector().size();
-			for (auto& ptr : grDish.getvector())
+			ar << (int)grDish.vectorGet().size();
+			for (auto& ptr : grDish.vectorGet())
 			{
 				auto elem = ptr.get();
 				ar << elem;
